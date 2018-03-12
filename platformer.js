@@ -410,8 +410,8 @@ Q.loadTMX("level1.tmx, collectables.json, doors.json, enemies.json, fire.mp3, ju
     Q.animations("player", {
       walk_right: { frames: [2,3,4,5], rate: 1/15, flip: false, loop: true },
       walk_left: { frames:  [2,3,4,5], rate: 1/15, flip:"x", loop: true },
-      jump_right: { frames: [0], rate: 1/10, flip: false },
-      jump_left: { frames:  [0], rate: 1/10, flip: "x" },
+      jump_right: { frames: [2], rate: 1/10, flip: false },
+      jump_left: { frames:  [2], rate: 1/10, flip: "x" },
       stand_right: { frames:[0,1], rate: 1/10, flip: false },
       stand_left: { frames: [0,1], rate: 1/10, flip:"x" },
       duck_right: { frames: [0], rate: 1/10, flip: false },
