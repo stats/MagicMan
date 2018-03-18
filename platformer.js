@@ -276,7 +276,7 @@ Q.Sprite.extend("Enemy", {
   hit: function(col) {
     if(col.obj.isA("Player") && !col.obj.p.immune && !this.p.dead) {
       col.obj.trigger('enemy.hit', {"enemy":this,"col":col});
-      Q.audio.play('hit.mp3');
+      Q.audio.play('scream.mp3');
     }
   },
 
@@ -339,7 +339,7 @@ Q.Sprite.extend("Collectable", {
       colObj.p.score += this.p.amount;
       Q.stageScene('hud', 3, colObj.p);
     }
-    Q.audio.play('coin.mp3');
+    Q.audio.play('star_audio.mp3');
     this.destroy();
   }
 });
@@ -388,6 +388,12 @@ Q.scene("level1",function(stage) {
   stage.add("viewport").follow(Q("Player").first());
 });
 
+Q.scene("level2", function(stage) {
+  Q.stageTMX("level2.tmx", stage);
+
+  stage.add("viewport").follow(Q("Player").first());
+});
+
 Q.scene('hud',function(stage) {
   var container = stage.insert(new Q.UI.Container({
     x: 50, y: 0
@@ -402,7 +408,7 @@ Q.scene('hud',function(stage) {
   container.fit(20);
 });
 
-Q.loadTMX("level1.tmx, collectables.json, doors.json, enemies.json, fire.mp3, jump.mp3, heart.mp3, hit.mp3, coin.mp3, player.json, magicman.png", function() {
+Q.loadTMX("level1.tmx, collectables.json, doors.json, enemies.json, fire.mp3, jump.mp3, heart.mp3, scream.mp3, coin.mp3, player.json, magicman.png, star_audio.mp3", function() {
     Q.compileSheets("magicman.png","player.json");
     Q.compileSheets("collectables.png","collectables.json");
     Q.compileSheets("enemies.png","enemies.json");
