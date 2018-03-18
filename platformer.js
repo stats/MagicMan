@@ -341,6 +341,16 @@ Q.Sprite.extend("Collectable", {
     }
     Q.audio.play('star_audio.mp3');
     this.destroy();
+
+    console.log(Q("Collectable").length)
+    //figureout if there area any stars left
+    if(Q("Collectable").length == 1){
+      Q.audio.play('yeah.mp3');
+      Q.stageScene("level2");
+      this.p.strength = 100;
+      this.animate({opacity: 1});
+      Q.stageScene('hud', 3, this.p);
+    }
   }
 });
 
@@ -408,7 +418,7 @@ Q.scene('hud',function(stage) {
   container.fit(20);
 });
 
-Q.loadTMX("level1.tmx, collectables.json, doors.json, enemies.json, fire.mp3, jump.mp3, heart.mp3, scream.mp3, coin.mp3, player.json, magicman.png, star_audio.mp3", function() {
+Q.loadTMX("level1.tmx, level2.tmx, collectables.json, doors.json, enemies.json, fire.mp3, jump.mp3, heart.mp3, scream.mp3, coin.mp3, player.json, magicman.png, star_audio.mp3, yeah.mp3", function() {
     Q.compileSheets("magicman.png","player.json");
     Q.compileSheets("collectables.png","collectables.json");
     Q.compileSheets("enemies.png","enemies.json");
